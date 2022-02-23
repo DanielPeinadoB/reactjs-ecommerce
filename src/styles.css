@@ -7,10 +7,13 @@ body {
     background-color: #1f1f1f;
     color: #fff;}
 
+.bg-dark {
+    background-color: #1a1a1a;
+}
+
 .navbar {
     text-align: center;
     justify-content: center;
-    background-color: #1a1a1a;
     position: fixed;
     top: 0;
     right: 0;
@@ -26,7 +29,7 @@ body {
     display: flex;
     flex-wrap: inherit;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
@@ -49,6 +52,44 @@ body {
 
 .nav-container {
     display: flex;
-    flex-grow: 1;
-    align-items: center;
+    flex-grow: 1;}
+    .nav-container .me-auto {
+        margin-right: auto;
+        padding-left: 0; }
+    .nav-container .nav-upperline {
+        gap: 5rem;
+        display: inline-flex;
+        flex-wrap: wrap!important;}
+        .nav-container .nav-upperline .nav-item {
+            font-size: 1rem;
+            color: #d4cfc4; }
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+    margin-top: 3.6rem;
 }
+
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    text-align: center;
+    white-space: nowrap;}
+        .nav .nav-item {
+        padding: 0.55rem 0.25rem;
+        font-size: 1rem; }
+            .nav .nav-item .nav-link {
+                color: #d4cfc4;
+                padding: 0.2rem 0.75rem;
+                border-radius: 0.25rem;
+                display: block;
+                text-transform: capitalize;
+                text-decoration: none;}
