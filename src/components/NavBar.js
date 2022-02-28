@@ -1,4 +1,5 @@
 import React from 'react'
+import CartWidget from './CartWidget'
 
 const NavBar = () => {
   return (
@@ -13,11 +14,9 @@ const NavBar = () => {
                     <div className='nav-upperline'>
                         <div className='nav-item'>login</div>
                         <input placeholder='Search your product...' autoComplete='off' />
-                        <div className='nav-item'>cart</div>
                         <div className='nav-item'>
                             <a href="/">
-                                <img src="" alt="" />
-                                <span>cart</span>
+                                <CartWidget/>
                             </a>
                         </div>
                     </div>
