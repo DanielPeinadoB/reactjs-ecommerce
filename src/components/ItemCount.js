@@ -9,10 +9,13 @@ const ItemCount = () => {
     let [estado, setEstado] = useState(inicial)
 
     const increase = () => {
-        setEstado(estado + 1)
+        if(estado < stock) {
+            setEstado(estado + 1)
+        }
     }
 
     const decrease = () => {
+        if(estado > inicial)
         setEstado(estado - 1)
     }
 
@@ -30,7 +33,7 @@ const ItemCount = () => {
             <h2> {estado} </h2>
             <button onClick={increase}>+</button>
         </div>
-        <button onClick={stockleft}>Agregar</button>
+        <button onClick={stockleft}>Agregar al carrito</button>
         <div>
             <span className='stock-limit'>Solo quedan {remain} unidades</span>
         </div>
