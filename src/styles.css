@@ -112,3 +112,53 @@ body {
                 display: block;
                 text-transform: capitalize;
                 text-decoration: none;}
+
+/* contador */
+
+.container-small {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    border: 1px solid red;
+    text-align: center; 
+}
+
+.container-top {
+    display: flex;
+    flex-direction: column;}
+    .container-top .p-text {
+        font-size: 2rem;}
+    .container-top .c-text {
+        font-size: 1rem;}
+
+.counter-area {
+    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.counter-meter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    right: 50%;
+    background-color: white;}
+    .counter-meter h2 {
+        margin: 0 50px;
+        font-size: 1.5rem;
+        color: black;}
+    .counter-meter button {
+        height: 30px;
+        width: 70px;
+        outline: none;
+        border-style: none;
+        font-size: 1.5rem;
+        background-color: white;
+        color: blue;}
+
+.stock-limit {
+    color: red;
+    font-size: 0.8rem;
+}

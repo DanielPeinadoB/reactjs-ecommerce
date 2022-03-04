@@ -1,6 +1,5 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import ItemListContainer from './ItemListContainer'
 
 const NavBar = () => {
   return (
@@ -15,7 +14,8 @@ const NavBar = () => {
                     <div className='nav-upperline'>
                         <input placeholder='Search your product...' autoComplete='off' />
                         <div className='nav-item'>
-                            <ItemListContainer username="Daniel" message="Welcome"/>
+                            <span>Welcome!</span>
+                            <span>Daniel</span>
                         </div>
                         <div>
                             <span>Log in</span>
