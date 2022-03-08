@@ -113,24 +113,37 @@ body {
                 text-transform: capitalize;
                 text-decoration: none;}
 
-/* contador */
+/* ILC */
 
-.container-small {
+.padding {
+    padding: 1rem;
+}
+
+.item-list-container {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     border: 1px solid red;
     text-align: center; 
 }
 
-.container-top {
+.item-list {
+    border: 1px solid red;
+    text-align: center;
+    padding: 1rem;
+}
+
+.item-card {
     display: flex;
-    flex-direction: column;}
-    .container-top .p-text {
-        font-size: 2rem;}
-    .container-top .c-text {
-        font-size: 1rem;}
+    flex-direction: column;
+    width: 200px;
+    height: 300px;
+    border: 1px solid blue;
+    text-align: center;
+}
+
+/* COUNTER AREA*/
 
 .counter-area {
     position: relative;

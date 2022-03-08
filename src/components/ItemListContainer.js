@@ -1,13 +1,16 @@
 import React from 'react'
+import ItemList from './ItemList'
 
-const ItemListContainer = ({product, category}) => {
+// ILC - Area 1 - contiene ItemList
+// Es el area donde se encuentran el box de cards
+
+const ItemListContainer = () => {
 
     //const {username, password} = props
 
   return (
-    <div className='container-top'>
-        <span className='p-text'>{product}</span>
-        <span className='c-text'>{category}</span>
+    <div className='padding'>
+        <ItemList/>
     </div>
   )
 }
