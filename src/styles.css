@@ -134,6 +134,8 @@ body {
     padding: 1rem;
 }
 
+/*Item Card Area*/
+
 .item-card {
     display: flex;
     flex-direction: column;
@@ -142,6 +144,18 @@ body {
     border: 1px solid blue;
     text-align: center;
 }
+
+.item-top {
+    display: flex;
+    flex-direction: column;
+    background-color: #0dcaf0;
+    padding-bottom: 1rem;
+    padding-top: 1rem;}
+    .item-top .item-title {
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        font-weight: bold;
+        text-transform: uppercase;}
 
 /* COUNTER AREA*/
 
