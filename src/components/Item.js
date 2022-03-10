@@ -1,10 +1,21 @@
-import React from 'react'
-
-const Item = () => {
+const Item = ({ producto }) => {
 
   return (
-    <div>
-        <button>Ver detalle del producto</button>
+    <div className='item-list'>
+      <div className='item-card'>
+        <div className='item-top'>
+          <span className='item-title'>{producto.title}</span>
+        </div>
+        <div>
+          <img src="/" alt="" />
+        </div>
+        <div>
+          <span className='item-description'>{producto.description}</span>
+        </div>
+        <div>
+          <span>{producto.price}</span>
+        </div>
+      </div>
     </div>
   )
 }
