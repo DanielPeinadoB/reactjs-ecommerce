@@ -2,7 +2,7 @@ import React from 'react'
 
 const ItemDetail = () => {
   return (
-    <div>ItemDetail</div>
+    <div className='item-list'>ItemDetail</div>
   )
 }
 

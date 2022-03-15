@@ -8,8 +8,6 @@ const Main = () => {
     <main className='main'>
       <div className='item-list-container'>
         <ItemListContainer/>
-      </div>
-      <div className='item-list-container'>
         <ItemDetailContainer/>
       </div>
     </main>

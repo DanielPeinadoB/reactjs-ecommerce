@@ -1,8 +1,12 @@
 import React from 'react'
+import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
+
   return (
-    <div>ItemDetailContainer</div>
+    <div className='padding'>
+        <ItemDetail />
+    </div>
   )
 }
 
