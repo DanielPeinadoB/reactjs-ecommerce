@@ -1,13 +1,15 @@
 import React from 'react'
 import ItemList from './ItemList'
+import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react'
+import { toast } from  'react-toastify'
 
 // ILC - Area 1 - contiene ItemList
 // Es el area donde se encuentran el box de cards
 
 //Conjunto de item:
 
-let productosIniciales = [
+/*let productosIniciales = [
   {
     id: 1,
     title: "Product 01",
@@ -26,38 +28,45 @@ let productosIniciales = [
     description: "description of product 03",
     price: 300
   },
-]
+]*/
 
 const ItemListContainer = () => {
 
+  const [loading, setLoading] = useState(true)
   const [productos, setProductos] = useState([])
+  const {idCategoria} = useParams()
 
   // setup de tiempo diferido de 2 segundos
 
   useEffect(() => {
 
-    const pedido = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(productosIniciales)
-      },2000)
-    })
+    //toast.info("Trayendo productos...")
 
-    pedido
+    fetch('https://fakestoreapi.com/products')
+    .then ((response) => {
+      return response.json()
+    })
     .then((resultado) => {
-      console.log("Estuvo bien")
       setProductos(resultado)
     })
-    .catch((error) => {
-      console.log("Estuvo mal")
+    .catch(() => {
+      toast.error("Error al cargar los productos")
     })
+    .finally(() => {
+      setLoading(false)
+    })
+    
+  },[idCategoria])
 
-  })
-
-  return (
-    <div className='padding'>
-        <ItemList productos={productos} />
-    </div>
-  )
+  if(loading) {
+      return <h1>Cargando...</h1>
+  } else {
+      return (
+        <div className='padding'>
+          <ItemList productos={productos} />
+        </div>
+      )
+  }
 }
 
 export default ItemListContainer

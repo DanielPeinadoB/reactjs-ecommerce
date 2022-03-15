@@ -6,14 +6,14 @@ const Item = ({ producto }) => {
         <div className='item-top'>
           <span className='item-title'>{producto.title}</span>
         </div>
-        <div>
-          <img src="/" alt="" />
-        </div>
-        <div>
-          <span className='item-description'>{producto.description}</span>
+        <div className='item-img'>
+          <img src={producto.image} alt=""/>
         </div>
         <div>
           <span>$ {producto.price}</span>
+        </div>
+        <div>
+          <span className='item-description'>ver detalle</span>
         </div>
       </div>
     </div>
