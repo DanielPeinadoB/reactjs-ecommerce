@@ -36,6 +36,33 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const {idCategoria} = useParams()
 
+  // usando toast y anterior
+  /*useEffect(() => {
+
+    //toast.info("Trayendo productos...")
+
+    const pedido = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(productosIniciales)
+        //rej(productosIniciales)
+      },2000)
+    })
+
+    pedido
+    .then((resultado) => {
+      //toast.dismiss()
+      setProductos(resultado)
+    })
+    .catch((error) => {
+      toast.error("Error al traer los productos")
+
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+
+  },[])*/
+
   // setup de tiempo diferido de 2 segundos
 
   useEffect(() => {
@@ -48,6 +75,7 @@ const ItemListContainer = () => {
     })
     .then((resultado) => {
       setProductos(resultado)
+      console.table(resultado)
     })
     .catch(() => {
       toast.error("Error al cargar los productos")

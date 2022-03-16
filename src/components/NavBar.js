@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 const NavBar = () => {
@@ -6,9 +7,9 @@ const NavBar = () => {
     <>
         <nav className='navbar bg-dark'>
             <div className='container'>
-                <a href="/" className='navbar-brand'>
+                <Link to="/" className='navbar-brand'>
                     <span className='brand-text'>nombre</span>
-                </a>
+                </Link>
                 <div className='nav-container'>
                     <div className='me-auto'></div>
                     <div className='nav-upperline'>
@@ -17,13 +18,13 @@ const NavBar = () => {
                             <span>Welcome!</span>
                             <span>Daniel</span>
                         </div>
-                        <div>
+                        <Link to="login">
                             <span>Log in</span>
-                        </div>
+                        </Link>
                         <div className='nav-item'>
-                            <a href="/">
+                            <Link to="/">
                                 <CartWidget/>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -32,19 +33,19 @@ const NavBar = () => {
         <div className='nav-scroller bg-dark'>
             <nav className='container nav nav-underline'>
                 <li className='nav-item'>
-                    <a href="/" className='nav-link'>products</a>
+                    <Link to="/category/products" className='nav-link'>products</Link>
                 </li>
                 <li className='nav-item'>
-                    <a href="/" className='nav-link'>dishes</a>
+                    <Link to="/category/dishes" className='nav-link'>dishes</Link>
                 </li>
                 <li className='nav-item'>
-                    <a href="/" className='nav-link'>cooking sets</a>
+                    <Link to="/category/cookingsets" className='nav-link'>cooking sets</Link>
                 </li>
                 <li className='nav-item'>
-                    <a href="/" className='nav-link'>kitchen</a>
+                    <Link to="/category/kitchen" className='nav-link'>kitchen</Link>
                 </li>
                 <li className='nav-item'>
-                    <a href="/" className='nav-link'>custom designs</a>
+                    <Link to="/category/customdesigns" className='nav-link'>custom designs</Link>
                 </li>
             </nav>
         </div>

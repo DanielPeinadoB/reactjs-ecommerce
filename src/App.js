@@ -3,16 +3,17 @@ import Footer from "./components/Footer"
 import Main from "./components/Main"
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
 
   return (
-      <>
-        <Header/>
-        <Main/>
+      <BrowserRouter>
+        <Header />
+        <Main />
         <Footer/>
-        <ToastContainer/>
-      </>
+        <ToastContainer />
+      </BrowserRouter>
     )
 }
 

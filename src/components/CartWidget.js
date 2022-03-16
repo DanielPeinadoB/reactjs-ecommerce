@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CartWidget = () => {
   return (
-    <span className='"material-icons"'>
-        shopping_cart
-    </span>
+    <Link to="/cart">
+      <span className="material-icons">
+          shopping_cart
+      </span>
+    </Link>
   )
 }
 
