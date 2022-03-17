@@ -7,9 +7,9 @@ import { toast } from  'react-toastify'
 // ILC - Area 1 - contiene ItemList
 // Es el area donde se encuentran el box de cards
 
-//Conjunto de item:
+/*Conjunto de item:
 
-/*let productosIniciales = [
+let productosIniciales = [
   {
     id: 1,
     title: "Product 01",
@@ -36,8 +36,8 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   const {idCategoria} = useParams()
 
-  // usando toast y anterior
-  /*useEffect(() => {
+  /* usando toast y anterior
+  useEffect(() => {
 
     //toast.info("Trayendo productos...")
 
@@ -52,6 +52,7 @@ const ItemListContainer = () => {
     .then((resultado) => {
       //toast.dismiss()
       setProductos(resultado)
+      console.table(resultado)
     })
     .catch((error) => {
       toast.error("Error al traer los productos")
@@ -63,8 +64,7 @@ const ItemListContainer = () => {
 
   },[])*/
 
-  // setup de tiempo diferido de 2 segundos
-
+  // Usando fakestoreapi.com
   useEffect(() => {
 
     //toast.info("Trayendo productos...")
