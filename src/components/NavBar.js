@@ -8,7 +8,7 @@ const NavBar = () => {
         <nav className='navbar bg-dark'>
             <div className='container'>
                 <Link to="/" className='navbar-brand'>
-                    <span className='brand-text'>nombre</span>
+                    <span className='brand-text'>brand name</span>
                 </Link>
                 <div className='nav-container'>
                     <div className='me-auto'></div>

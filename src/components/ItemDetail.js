@@ -2,14 +2,16 @@ import React from 'react'
 
 const ItemDetail = ({item}) => {
   return (
-    <div className='item-list'>
+    <div className='item-detail'>
       <div className='item-img-detail'>
-        <img src={item.image} alt="" />
+        <img src={item.image} alt="" className='item-detail-image' />
       </div>
-      <div>{item.title}</div>
-      <div>{item.category}</div>
-      <div>{item.description}</div>
-      <div>{item.price}</div>
+      <div className='item-detail-text'>
+        <div className='item-detail-title'>{item.title}</div>
+        <div className='item-detail-category'>{item.category}</div>
+        <div className='item-detail-description'>{item.description}</div>
+        <div className='item-detail-price'>$ {item.price}</div>
+      </div>
     </div>
   )
 }

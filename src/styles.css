@@ -177,6 +177,28 @@ body {
     height: 100%;
 }
 
+/*Item Detail*/
+
+.item-detail {
+    border: 1px solid green;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    background-color: none;
+    color: white;
+    gap: 5rem; }
+    .item-detail .item-img-detail {
+        width: 500px;}
+    .item-detail .item-detail-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1.5rem;}
+        .item-detail .item-detail-text .item-detail-title {
+            font-size: 2rem;
+        }
+
 /* COUNTER AREA*/
 
 .counter-area {
