@@ -189,10 +189,12 @@ body {
     color: white;
     gap: 5rem; }
     .item-detail .item-img-detail {
-        width: 500px;}
+        height: 20%;
+        width: 20%;}
     .item-detail .item-detail-text {
         display: flex;
         flex-direction: column;
+        width: 80%;
         gap: 2rem;
         font-size: 1.5rem;}
         .item-detail .item-detail-text .item-detail-title {
