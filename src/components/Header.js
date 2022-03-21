@@ -57,7 +57,7 @@ const Header = () => {
       <div className='nav-scroller bg-dark'>
         <nav className='container nav nav-underline'>
           {categories.map((category) => {
-            return <NavBar key={category.value} category={category}/>
+            return <NavBar key={category} category={category}/>
           })}
         </nav>
       </div>

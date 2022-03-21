@@ -34,8 +34,10 @@ const ItemListContainer = () => {
 
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState([]);
-  const [categorias, setCategorias] = useState([])
+  const [categorias, setCategorias] = useState([]);
   const { idCategory } = useParams();
+
+  console.log(idCategory)
 
   /* usando toast y anterior
   useEffect(() => {
@@ -99,11 +101,15 @@ const ItemListContainer = () => {
     .finally(() => {
       setLoading(false)
     })
-    
+   
   },[idCategory])
 
-  if(loading) {
-      return <h1>Cargando...</h1>
+  if(idCategory) {
+    return (
+      <div className='padding'>
+        <ItemList productos={categorias} />
+      </div>
+    )
   } else {
       return (
         <div className='padding'>
