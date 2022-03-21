@@ -3,7 +3,30 @@ import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
-const Header = ({ categories }) => {
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify'
+
+const Header = () => {
+
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products/categories')
+    .then((response) => {
+      return response.json()
+    })
+    .then((resultado) => {
+      setCategories(resultado)
+      console.table(resultado)
+    })
+    .catch(() => {
+      toast.error("Error al cargar los productos")
+    })
+    .finally(() => {
+      
+    })
+  },[])
+
   return (
     <>
       <nav className='navbar bg-dark'>

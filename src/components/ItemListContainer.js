@@ -32,9 +32,10 @@ let productosIniciales = [
 
 const ItemListContainer = () => {
 
-  const [loading, setLoading] = useState(true)
-  const [productos, setProductos] = useState([])
-  const {idCategoria} = useParams()
+  const [loading, setLoading] = useState(true);
+  const [productos, setProductos] = useState([]);
+  const [categorias, setCategorias] = useState([])
+  const { idCategory } = useParams();
 
   /* usando toast y anterior
   useEffect(() => {
@@ -69,7 +70,7 @@ const ItemListContainer = () => {
 
     //toast.info("Trayendo productos...")
 
-    fetch('https://fakestoreapi.com/products')
+    fetch('https://fakestoreapi.com/products/')
     .then ((response) => {
       return response.json()
     })
@@ -83,8 +84,23 @@ const ItemListContainer = () => {
     .finally(() => {
       setLoading(false)
     })
+
+    fetch(`https://fakestoreapi.com/products/category/${idCategory}`)
+    .then ((response) => {
+      return response.json()
+    })
+    .then((resultado) => {
+      setCategorias(resultado)
+      console.table(resultado)
+    })
+    .catch(() => {
+      toast.error("Error al cargar los productos")
+    })
+    .finally(() => {
+      setLoading(false)
+    })
     
-  },[idCategoria])
+  },[idCategory])
 
   if(loading) {
       return <h1>Cargando...</h1>
