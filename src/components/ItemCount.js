@@ -1,12 +1,9 @@
 import {useState} from 'react'
 
 
-const ItemCount = () => {
+const ItemCount = ({ initial, stock, onAdd }) => {
 
-    const inicial = 0
-    const stock = 20
-
-    let [estado, setEstado] = useState(inicial)
+    let [estado, setEstado] = useState(initial)
 
     const increase = () => {
         if(estado < stock) {
@@ -15,13 +12,15 @@ const ItemCount = () => {
     }
 
     const decrease = () => {
-        if(estado > inicial)
+        if(estado > initial)
         setEstado(estado - 1)
     }
 
     let [remain, setStock] = useState(stock)
 
-    const stockleft = () => {
+    const handleAdd = () => {
+        //setEstado(0)
+        onAdd(estado)
         setStock(stock - estado)
     }
 
@@ -33,7 +32,7 @@ const ItemCount = () => {
             <h2> {estado} </h2>
             <button onClick={increase}>+</button>
         </div>
-        <button onClick={stockleft}>Agregar al carrito</button>
+        <button onClick={handleAdd}>Agregar al carrito</button>
         <div>
             <span className='stock-limit'>Solo quedan {remain} unidades</span>
         </div>
