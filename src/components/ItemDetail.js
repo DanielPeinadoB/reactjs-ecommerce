@@ -29,7 +29,6 @@ const ItemDetail = ({item}) => {
             <span>Usted ha agregado {cantidad} und. haga click para</span>
             <Link to="/cart">Ir al carrito</Link>
           </div>
-          
         )}
       </div>
     </div>

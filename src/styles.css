@@ -1,7 +1,8 @@
 * {
     padding: 0px;
     margin: 0px;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;}
 
 html , body , #root {
     height: 100vh;
@@ -15,6 +16,7 @@ html , body , #root {
 main {
     flex-grow: 1;
     padding: 1rem;
+    margin-top: 110px;
 }
 
 body {
@@ -26,18 +28,24 @@ body {
 }
 
 .navbar {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     z-index: 1;
-    display: flex;
-    align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    height: 90px;
 }
+
+.nav-scroller {
+    width: 100%;
+    background-color: #0d6efd }
 
 .container {
     display: flex;
@@ -55,14 +63,13 @@ body {
     color: #d4cfc4;
     padding: 0px !important;
     margin-right: 1rem;
-    text-decoration: none;
-}
+    text-decoration: none; }
+    .navbar-brand .brand-text {
+        font-size: 1.75rem;
+        white-space: nowrap;
+        text-transform: uppercase; }
 
-.brand-text {
-    font-size: 1.25rem;
-    white-space: nowrap;
-    text-transform: uppercase;
-}
+
 
 .nav-container {
     display: flex;
@@ -73,28 +80,21 @@ body {
     .nav-container .nav-upperline {
         gap: 5rem;
         display: inline-flex;
-        flex-wrap: wrap!important;}
+        flex-wrap: wrap!important;
+        align-items: center;}
         .nav-container .nav-upperline .nav-item {
             font-size: 1rem;
-            color: #d4cfc4; }
+            color: #d4cfc4;
+            padding: 0.55rem 0.25rem; }
 
 .nav-login {
     display: flex;
     flex-direction: column;
 }
 
-.nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.5rem;
-    margin-top: 4rem;
-}
-
-
 .nav {
     display: flex;
     flex-wrap: nowrap;
-    padding-bottom: 1rem;
     margin-top: -1px;
     padding-left: 0;
     margin-bottom: 0;
@@ -177,23 +177,23 @@ body {
 /*Item Detail*/
 
 .item-detail {
-    border: 1px solid green;
-    text-align: center;
-    padding: 1rem;
     display: flex;
     flex-direction: row;
+    text-align: center;
+    padding: 5rem;
+    gap: 5rem;
+    border: 1px solid green;
     background-color: none;
-    color: white;
-    gap: 5rem; }
+    color: white; }
     .item-detail .item-img-detail {
-        height: 20%;
-        width: 20%;}
+        width: 50rem;}
     .item-detail .item-detail-text {
         display: flex;
         flex-direction: column;
         width: 80%;
         gap: 2rem;
-        font-size: 1.5rem;}
+        font-size: 1.5rem;
+        align-items: center; }
         .item-detail .item-detail-text .item-detail-title {
             font-size: 2rem;
         }
@@ -202,6 +202,7 @@ body {
 
 .counter-area {
     position: relative;
+    width: 20rem;
     padding-left: 1rem;
     padding-right: 1rem;
 }

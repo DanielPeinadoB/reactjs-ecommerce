@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify'
+import { contexto } from './cartContext';
 
 const Header = () => {
 
@@ -27,12 +28,14 @@ const Header = () => {
     })
   },[])
 
+  const {cantidad} = useContext(contexto)
+
   return (
     <>
       <nav className='navbar bg-dark'>
-        <div className='container'>
+        <div className='container container-top'>
           <Link to="/" className='navbar-brand'>
-              <span className='brand-text'>brand name</span>
+              <span className='brand-text'>monkee games</span>
           </Link>
           <div className='nav-container'>
             <div className='me-auto'></div>
@@ -53,15 +56,14 @@ const Header = () => {
             </div>
           </div>
         </div>
+        <div className='nav-scroller bg-dark'>
+          <nav className='container nav nav-underline'>
+            {categories.map((category) => {
+              return <NavBar key={category} category={category}/>
+            })}
+          </nav>
+        </div>
       </nav>
-      <div className='nav-scroller bg-dark'>
-        <nav className='container nav nav-underline'>
-          {categories.map((category) => {
-            return <NavBar key={category} category={category}/>
-          })}
-        </nav>
-      </div>
-
     </>
   )
 }

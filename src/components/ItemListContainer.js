@@ -37,8 +37,6 @@ const ItemListContainer = () => {
   const [categorias, setCategorias] = useState([]);
   const { idCategory } = useParams();
 
-  console.log(idCategory)
-
   /* usando toast y anterior
   useEffect(() => {
 
