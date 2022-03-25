@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify'
+//import { toast } from 'react-toastify'
 
 const Header = () => {
 
-  const [categories, setCategories] = useState([])
+  const [categories, /*setCategories*/] = useState([])
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/categories')
+    /*fetch('https://fakestoreapi.com/products/categories')
     .then((response) => {
       return response.json()
     })
@@ -24,7 +24,7 @@ const Header = () => {
     })
     .finally(() => {
       
-    })
+    })*/
   },[])
 
   return (
