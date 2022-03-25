@@ -3,8 +3,32 @@ import ItemList from './ItemList'
 import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { toast } from  'react-toastify'
-import { db } from "./firebase"
-import { collection , getDocs } from "firebase/firestore"
+
+// ILC - Area 1 - contiene ItemList
+// Es el area donde se encuentran el box de cards
+
+/*Conjunto de item:
+
+let productosIniciales = [
+  {
+    id: 1,
+    title: "Product 01",
+    description: "description of product 01",
+    price: 100
+  },
+  {
+    id: 2,
+    title: "Product 02",
+    description: "description of product 02",
+    price: 200
+  },
+  {
+    id: 3,
+    title: "Product 03",
+    description: "description of product 03",
+    price: 300
+  },
+]*/
 
 const ItemListContainer = () => {
 
@@ -13,26 +37,71 @@ const ItemListContainer = () => {
   const [categorias, setCategorias] = useState([]);
   const { idCategory } = useParams();
 
+  console.log(idCategory)
+
+  /* usando toast y anterior
   useEffect(() => {
 
-    const productosCollection = collection(db,"productos")
-    const consulta = getDocs(productosCollection)
+    //toast.info("Trayendo productos...")
 
-    consulta
-      .then((resultado)=>{
-        
-        const array_de_resultados = resultado.docs.map((doc)=>{
-          return doc.data()
-          //console.log(doc.id)
-        })
+    const pedido = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(productosIniciales)
+        //rej(productosIniciales)
+      },2000)
+    })
 
-        //console.log(array_de_resultados)
-        setProductos(array_de_resultados)
-        setLoading(false)
-      })
-      .catch(()=>{
-        toast.error("Error al cargar los productos")
-      })
+    pedido
+    .then((resultado) => {
+      //toast.dismiss()
+      setProductos(resultado)
+      console.table(resultado)
+    })
+    .catch((error) => {
+      toast.error("Error al traer los productos")
+
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+
+  },[])*/
+
+  // Usando fakestoreapi.com
+  useEffect(() => {
+
+    //toast.info("Trayendo productos...")
+
+    fetch('https://fakestoreapi.com/products/')
+    .then ((response) => {
+      return response.json()
+    })
+    .then((resultado) => {
+      setProductos(resultado)
+      console.table(resultado)
+    })
+    .catch(() => {
+      toast.error("Error al cargar los productos")
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+
+    fetch(`https://fakestoreapi.com/products/category/${idCategory}`)
+    .then ((response) => {
+      return response.json()
+    })
+    .then((resultado) => {
+      setCategorias(resultado)
+      console.table(resultado)
+    })
+    .catch(() => {
+      toast.error("Error al cargar los productos")
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+   
   },[idCategory])
 
   if(idCategory) {
