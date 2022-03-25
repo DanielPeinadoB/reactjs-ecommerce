@@ -238,3 +238,24 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/* carrito de compras */
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem; }
+    .cart h2 {
+        font-size: 2rem; }
+    .cart .cart-detail {
+        display: flex;
+        flex-direction: row; }
+        .cart .cart-detail .cart-img {
+            width: 100px; }
+        .cart .cart-detail .cart-product {
+            display: flex;
+            flex-direction: row;
+            gap: 5rem; }
+            .cart .cart-detail .cart-product .cart-product-details {
+                display: flex;
+                flex-direction: column; }
