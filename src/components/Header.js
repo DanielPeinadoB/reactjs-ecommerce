@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 import { useEffect, useState } from 'react';
-//firebase
-import { db } from './firebase'
-import { collection, getDocs, query, where } from "firebase/firestore"
 import { toast } from 'react-toastify';
+//firebase
+//import { db } from './firebase'
+//import { collection, getDocs, query, where } from "firebase/firestore"
 //getDocs     - Traer muchos documentos (un grupo de)
 //getDoc      - Traer de a uno
 //collection  - Referirte a una colección X, referida en firebase.js
@@ -25,10 +25,11 @@ const Header = () => {
 
   useEffect(() => {
 
-    const categoriesRef = collection(db, "dbItems")
-    const q = query(categoriesRef, where("categoryid", "==", "keyboards"))
-    const consulta = getDocs(q)
-
+    /*fire
+    //const categoriesRef = collection(db, "dbItems")
+    //const q = query(categoriesRef, where("categoryid", "==", "keyboards"))
+    //const consulta = getDocs(q)
+    
     console.log(q)
     console.log(consulta)   //da una promise
 
@@ -40,8 +41,8 @@ const Header = () => {
       })
       .catch(() => {
         toast.error("Error al cargar los productos")
-      })
-    /*fetch('https://fakestoreapi.com/products/categories')
+      })*/
+    fetch('https://fakestoreapi.com/products/categories')
     .then((response) => {
       return response.json()
     })
@@ -54,7 +55,7 @@ const Header = () => {
     })
     .finally(() => {
       
-    })*/
+    })
   },[])
 
   return (
@@ -84,9 +85,11 @@ const Header = () => {
           </div>
         </div>
         <div className='nav-scroller bg-dark'>
-          <nav className='container nav nav-underline'>
-            <NavBar />
-          </nav>
+        <nav className='container nav nav-underline'>
+          {categories.map((category) => {
+            return <NavBar key={category} category={category}/>
+          })}
+        </nav>
         </div>
       </nav>
     </>

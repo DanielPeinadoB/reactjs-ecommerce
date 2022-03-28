@@ -4,8 +4,8 @@ import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { toast } from  'react-toastify'
 //firebase
-import { db } from './firebase'
-import { collection, getDocs } from "firebase/firestore"
+//import { db } from './firebase'
+//import { collection, getDocs, query, where } from "firebase/firestore"
 
 const ItemListContainer = () => {
 
@@ -16,15 +16,57 @@ const ItemListContainer = () => {
   const [categorias, setCategorias] = useState([]);
   const { idCategory } = useParams();
 
+  //Usando fakeapi
   useEffect(() => {
+
+    setLoading(true)
+    //toast.info("Trayendo productos...")
+
+    fetch('https://fakestoreapi.com/products/')
+    .then ((response) => {
+      return response.json()
+    })
+    .then((resultado) => {
+      setProductos(resultado)
+      console.table(resultado)
+    })
+    .catch(() => {
+      toast.error("Error al cargar los productos")
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+
+    fetch(`https://fakestoreapi.com/products/category/${idCategory}`)
+    .then ((response) => {
+      return response.json()
+    })
+    .then((resultado) => {
+      setCategorias(resultado)
+      console.table(resultado)
+    })
+    .catch(() => {
+      toast.error("Error al cargar los productos")
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+   
+  },[idCategory])
+
+  //Usando firestore
+  /*useEffect(() => {
 
     setLoading(true)
 
     //Se busca la collection en la db(./firebase) con el nombre de "dbItems"
     const productosCollection = collection(db,"dbItems")
-    const consulta = getDocs(productosCollection)
+    const consultaProductos = getDocs(productosCollection)
 
-    consulta
+    //
+    const consultaCategorias = query(productosCollection, where("categoryid", "array-contains-any", ['keyboards']))
+
+    consultaProductos
       //trae los productos a la pagina principal (/)
       .then((resultado) => {
         const products = resultado.docs.map((doc)=>{
@@ -39,10 +81,7 @@ const ItemListContainer = () => {
       .finally(() => {
         setLoading(false);
       })
-
-      //muestra todas las consultas con la variante "x"
-
-  },[idCategory])
+  },[idCategory])*/
 
   if(idCategory) {
     return (
