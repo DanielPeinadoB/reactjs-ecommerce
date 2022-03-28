@@ -3,6 +3,7 @@ import ItemList from './ItemList'
 import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { toast } from  'react-toastify'
+//firebase
 import { db } from './firebase'
 import { collection, getDocs } from "firebase/firestore"
 
@@ -19,10 +20,12 @@ const ItemListContainer = () => {
 
     setLoading(true)
 
+    //Se busca la collection en la db(./firebase) con el nombre de "dbItems"
     const productosCollection = collection(db,"dbItems")
     const consulta = getDocs(productosCollection)
 
     consulta
+      //trae los productos a la pagina principal (/)
       .then((resultado) => {
         const products = resultado.docs.map((doc)=>{
           return doc.data()
@@ -36,6 +39,8 @@ const ItemListContainer = () => {
       .finally(() => {
         setLoading(false);
       })
+
+      //muestra todas las consultas con la variante "x"
 
   },[idCategory])
 

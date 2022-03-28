@@ -6,7 +6,7 @@ const NavBar = ({ category }) => {
   return (
     <>
         <li className='nav-item'>
-            <NavLink to={`/category/${category}`} className='nav-link'>{category}</NavLink>
+            <NavLink to={`/category/${category}`} className='nav-link'>Keyboards</NavLink>
         </li>
     </>
   )
