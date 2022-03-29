@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { contexto } from './context/cartContext';
 //firebase
 //import { db } from './firebase'
 //import { collection, getDocs, query, where } from "firebase/firestore"
@@ -19,6 +20,8 @@ import { toast } from 'react-toastify';
 //import { toast } from 'react-toastify'
 
 const Header = () => {
+
+  const {cantidad} = useContext(contexto)
 
   //variable categories
   const [categories, setCategories] = useState([])
@@ -80,6 +83,7 @@ const Header = () => {
                 <Link to="/">
                   <CartWidget/>
                 </Link>
+                {cantidad}
               </div>
             </div>
           </div>

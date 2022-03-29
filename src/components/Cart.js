@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { contexto } from './context/cartContext'
 
 const Cart = () => {
+
+  const {carrito,total} = useContext(contexto)
+  
+  const handleClick = () => {
+    console.log("Click")
+  }
 
   return (
     <div className='cart'>
       <h2>Cart</h2>
-        <div className='cart-detail' >
+      {carrito.map(producto => (
+        <div className='cart-detail' key={producto.id}>
           <div className='cart-img'>
             <img src="/" alt="" />
           </div>
           <div className='cart-product'>
             <div className='cart-product-details'>
-              <span>producto.nombre</span>
+              <span>{producto.nombre}</span>
               <span>Stock remaining</span>
-              <button>borrar</button>
+              <button onClick={handleClick}>borrar</button>
             </div>
             <div className='cart-product-details'>
-              <span>producto.precio * producto.cantidad</span>
+              <span>{producto.precio * producto.cantidad}</span>
             </div>
           </div>
         </div>
+      ))}
     </div>
   )
 }
