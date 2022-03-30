@@ -6,18 +6,6 @@ import CartWidget from './CartWidget'
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { contexto } from './context/cartContext';
-//firebase
-//import { db } from './firebase'
-//import { collection, getDocs, query, where } from "firebase/firestore"
-//getDocs     - Traer muchos documentos (un grupo de)
-//getDoc      - Traer de a uno
-//collection  - Referirte a una colección X, referida en firebase.js
-//updateDoc   - Actualizar un documento como el stock luego de una compra
-//addDoc      - 
-//query       - Filtro, como de categoria
-//where
-
-//import { toast } from 'react-toastify'
 
 const Header = () => {
 
@@ -25,41 +13,6 @@ const Header = () => {
 
   //variable categories
   const [categories, setCategories] = useState([])
-
-  useEffect(() => {
-
-    /*fire
-    //const categoriesRef = collection(db, "dbItems")
-    //const q = query(categoriesRef, where("categoryid", "==", "keyboards"))
-    //const consulta = getDocs(q)
-    
-    console.log(q)
-    console.log(consulta)   //da una promise
-
-    consulta
-      .then((resultado) => {
-        resultado.docs.forEach((doc) => {
-          console.log(doc.data())
-        })
-      })
-      .catch(() => {
-        toast.error("Error al cargar los productos")
-      })*/
-    fetch('https://fakestoreapi.com/products/categories')
-    .then((response) => {
-      return response.json()
-    })
-    .then((resultado) => {
-      setCategories(resultado)
-      console.table(resultado)
-    })
-    .catch(() => {
-      toast.error("Error al cargar los productos")
-    })
-    .finally(() => {
-      
-    })
-  },[])
 
   return (
     <>
@@ -90,9 +43,7 @@ const Header = () => {
         </div>
         <div className='nav-scroller bg-dark'>
         <nav className='container nav nav-underline'>
-          {categories.map((category) => {
-            return <NavBar key={category} category={category}/>
-          })}
+          <NavBar />
         </nav>
         </div>
       </nav>

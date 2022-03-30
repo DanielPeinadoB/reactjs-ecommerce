@@ -7,13 +7,13 @@ import Cart from "./Cart"
 
 const Main = () => {
   return (
-    <main className='main'>
+    <main className="main">
       <div className='item-list-container'>
         <Routes>
-          <Route path='/' element={<ItemListContainer/>} />
-          <Route path='/category/:idCategory' element={<ItemListContainer/>} />
-          <Route path='/product/:idProduct' element={<ItemDetailContainer/>} />
-          <Route path='/cart' element={<Cart/>} />
+          <Route path="/" element={<ItemListContainer/>} />
+          <Route path="/category/:idCategory" element={<ItemListContainer/>} />
+          <Route path="/product/:idProduct" element={<ItemDetailContainer/>} />
+          <Route path="/cart" element={<Cart/>} />
         </Routes>
       </div>
     </main>

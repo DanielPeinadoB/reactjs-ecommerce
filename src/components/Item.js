@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+//los campos deben de ser los mismos a los de la base de datos
+
 const Item = ({ producto }) => {
 
   return (
@@ -9,7 +11,7 @@ const Item = ({ producto }) => {
           <span className='item-title'>{producto.title}</span>
         </div>
         <div className='item-img'>
-          <img src={producto.image} alt=""/>
+          <img src={producto.prodimg} alt=""/>
         </div>
         <div>
           <span>$ {producto.price}</span>

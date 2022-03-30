@@ -1,38 +1,21 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom'
 
-/*const NavBar = () => {
-
-  const [click, setClick] = useState(false)
-
-  const handleClick = () => {
-    setClick(!click)
-  }
+const NavBar = () => {
 
   return (
     <>
         <li className='nav-item'>
-            <NavLink to="category/keyboards" className='nav-link' onClick={handleClick}>keyboards</NavLink>
+            <NavLink to="/category/teclados" className='nav-link'>teclados</NavLink>
         </li>
         <li className='nav-item'>
-            <NavLink to="category/monitor" className='nav-link' onClick={handleClick}>monitor</NavLink>
+            <NavLink to="/category/ratones" className='nav-link'>ratones</NavLink>
         </li>
         <li className='nav-item'>
-            <NavLink to="category/mouse" className='nav-link' onClick={handleClick}>mouse</NavLink>
+            <NavLink to="/category/monitores" className='nav-link'>monitores</NavLink>
         </li>
         <li className='nav-item'>
-            <NavLink to="category/cases" className='nav-link' onClick={handleClick}>cases</NavLink>
-        </li>
-    </>
-  )
-}*/
-
-const NavBar = ({ category }) => {
-
-  return (
-    <>
-        <li className='nav-item'>
-            <NavLink to={`/category/${category}`} className='nav-link'>{category}</NavLink>
+            <NavLink to="/category/gabinetes" className='nav-link'>gabinetes</NavLink>
         </li>
     </>
   )

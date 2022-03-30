@@ -1,36 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ItemCount from './ItemCount'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { contexto } from './context/cartContext';
 
 const ItemDetail = ({item}) => {
 
-  const [cantidad, setCantidad] = useState(0)
+  const [seleccionado, setSeleccionado] = useState(0)
+  const {addItem} = useContext(contexto)
 
-  const onAdd = ( cantidad ) => {
-    setCantidad(cantidad);
-    console.log('Añadir al carrito', cantidad, 'und')
+  const onAdd = ( cantidadSeleccionada ) => {
+    console.log('Añadir al carrito', cantidadSeleccionada, 'und')
+    setSeleccionado(cantidadSeleccionada);
+    addItem(item,cantidadSeleccionada)
   }
 
   return (
     <div className='item-detail'>
       <div className='item-img-detail'>
-        <img src={item.image} alt="" className='item-detail-image' />
+        <img src={item.prodimg} alt="" className='item-detail-image' />
       </div>
       <div className='item-detail-text'>
         <div className='item-detail-title'>{item.title}</div>
-        <div className='item-detail-category'>{item.category}</div>
+        <div className='item-detail-category'>{item.categoryid}</div>
         <div className='item-detail-description'>{item.description}</div>
         <div className='item-detail-price'>$ {item.price}</div>
-        {cantidad === 0 ? (
-          <ItemCount stock={20} initial={0} onAdd={onAdd} />
-        ) : (
-          <div className='resultado-agregar-itemdetail'>
-            <span>Usted ha agregado {cantidad} und. haga click para</span>
-            <Link to="/cart">Ir al carrito</Link>
-          </div>
-          
-        )}
+        <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+        <Link to="/cart">Ir al carrito</Link>
       </div>
     </div>
   )

@@ -4,95 +4,49 @@ import {useParams} from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { toast } from  'react-toastify'
 //firebase
-//import { db } from './firebase'
-//import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from './firebase'
+import { collection, doc, getDocs, query, where } from "firebase/firestore"
 
 const ItemListContainer = () => {
 
-  //dbItems - nombre de la db de los items en firebase
-
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState([]);
-  const [categorias, setCategorias] = useState([]);
   const { idCategory } = useParams();
 
-  //Usando fakeapi
   useEffect(() => {
 
-    setLoading(true)
-    //toast.info("Trayendo productos...")
+    if(!idCategory){
+      //Se busca la collection en la db(./firebase) con el nombre de "dbItems"
+      const productosCollection = collection(db,"dbItems")
+      const pedido = getDocs(productosCollection)
 
-    fetch('https://fakestoreapi.com/products/')
-    .then ((response) => {
-      return response.json()
-    })
-    .then((resultado) => {
-      setProductos(resultado)
-      console.table(resultado)
-    })
-    .catch(() => {
-      toast.error("Error al cargar los productos")
-    })
-    .finally(() => {
-      setLoading(false)
-    })
+      pedido
+        .then (resultado => setProductos(resultado.docs.map(doc => doc.data())))
+        .catch(() => toast.error("Error al cargar los productos"))
+        .finally(() => setLoading(false))
+    }else{
+      //Filtro de los items por categoria (categoryid)
+      const productosCollection = collection(db,"dbItems")
+      const filtro = query(productosCollection,where("categoryid", "==", idCategory))
+      const pedido = getDocs(filtro)
 
-    fetch(`https://fakestoreapi.com/products/category/${idCategory}`)
-    .then ((response) => {
-      return response.json()
-    })
-    .then((resultado) => {
-      setCategorias(resultado)
-      console.table(resultado)
-    })
-    .catch(() => {
-      toast.error("Error al cargar los productos")
-    })
-    .finally(() => {
-      setLoading(false)
-    })
-   
+      pedido
+        .then(res => setProductos(res.docs.map(doc => doc.data())))
+        //usando el Auto-ID de Firebase
+        //.then(res => setProductos(res.docs.map(doc => ({id: doc.id, ...doc.data()} ))))
+        .catch(() => toast.error("Error al cargar los productos"))
+        .finally(() => setLoading(false))
+
+    }
+    
   },[idCategory])
 
-  //Usando firestore
-  /*useEffect(() => {
-
-    setLoading(true)
-
-    //Se busca la collection en la db(./firebase) con el nombre de "dbItems"
-    const productosCollection = collection(db,"dbItems")
-    const consultaProductos = getDocs(productosCollection)
-
-    //
-    const consultaCategorias = query(productosCollection, where("categoryid", "array-contains-any", ['keyboards']))
-
-    consultaProductos
-      //trae los productos a la pagina principal (/)
-      .then((resultado) => {
-        const products = resultado.docs.map((doc)=>{
-          return doc.data()
-        })
-
-        setProductos(products)
-        })
-      .catch(() => {
-        toast.error("Error al cargar los productos")
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-  },[idCategory])*/
-
-  if(idCategory) {
-    return (
-      <div className='padding'>
-        <ItemList productos={categorias} />
-      </div>
-    )
+  if(loading) {
+    return <h1>Cargando...</h1>
   } else {
       return (
         <div className='padding'>
-          {loading ? <h2>Cargando...</h2> : <ItemList productos={productos} />}
+          <ItemList productos={productos} />
         </div>
       )
   }
