@@ -9,6 +9,7 @@ const Cart = () => {
 
   const {carrito,total} = useContext(contexto)
   const {removeItem} = useContext(contexto)
+  const {clearItems} = useContext(contexto)
 
   const terminarCompra = () => {
     const orden = {
@@ -46,18 +47,29 @@ const Cart = () => {
           <div className='cart-product'>
             <div className='cart-product-details'>
               <span>{producto.title}</span>
-              <span>Stock remaining</span>
               <button onClick={() => removeItem(producto.id)}>borrar</button>
             </div>
-            <div className='cart-product-details'>
+            <div className='cart-product-details flex-end'>
               <span>$ {producto.price * producto.nuevaCantidad}</span>
             </div>
           </div>
         </div>
       ))}
-      <p>Total : $ {total}</p>
-      <button onClick={terminarCompra} className='boton'>Terminar la compra</button>
-      <span></span>
+      <div className='final-total'>
+        <div className='column'>
+          <span className='small'>Para remover todos los articulos haga click en el siguiente boton</span>
+          <div className='remove-btn'>
+            <button onClick={clearItems}>remover todos</button>
+          </div>
+        </div>
+        <div className='column'>
+          <div className='total'>
+            <span>Total :</span>
+            <p>$ {total}</p>
+          </div>
+          <button onClick={terminarCompra} className='boton'>Terminar la compra</button>
+      </div>
+        </div>
     </div>
   )
 }

@@ -5,21 +5,18 @@ import { Link } from 'react-router-dom'
 const Item = ({ producto }) => {
 
   return (
-    <div className='item-list'>
-      <div className='item-card'>
-        <div className='item-top'>
-          <span className='item-title'>{producto.title}</span>
-        </div>
+    <div className='item-list hover-effect'>
+      <Link to={`/product/${producto.id}`} className='nodeco item-card'>
         <div className='item-img'>
           <img src={producto.prodimg} alt=""/>
         </div>
-        <div>
-          <span>$ {producto.price}</span>
+        <div className='item-top'>
+          <span className='item-title'>{producto.title}</span>
         </div>
         <div>
-          <Link to={`/product/${producto.id}`}>ver detalle</Link>
+          <span className='nodeco iprice'>$ {producto.price}</span>
         </div>
-      </div>
+      </Link>
     </div>
   )
 }

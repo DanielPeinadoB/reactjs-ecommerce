@@ -42,6 +42,8 @@ const MiProvider = ({children}) => {
     setCarrito([])
   }
 
+  const clearItems = () => setCarrito([]);
+
   const valorDelContexto = {
     carrito : carrito,
     cantidad : cantidad,
@@ -49,7 +51,8 @@ const MiProvider = ({children}) => {
     addItem : addItem,
     removeItem : removeItem, 
     isInCart : isInCart,
-    clear : clear
+    clear : clear,
+    clearItems : clearItems
   }
 
   return (
