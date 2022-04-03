@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const contexto = createContext()
+export const contexto = createContext([])
 
 const {Provider, Consumer} = contexto
 
@@ -10,6 +10,11 @@ const MiProvider = ({children}) => {
   const [carrito, setCarrito] = useState([])
   const [cantidad, setCantidad] = useState(0)
   const [total, setTotal] = useState(0)
+
+  const unidades = () => {
+    const cantidad = carrito.reduce((x, y) => x + y.cantidad, 0);
+    return cantidad;
+  };
 
   const addItem = (producto, nuevaCantidad) => {
 
@@ -42,12 +47,16 @@ const MiProvider = ({children}) => {
     setCarrito([])
   }
 
-  const clearItems = () => setCarrito([]);
+  const clearItems = () => {
+    setCarrito([]);
+    setTotal(0)
+  }
 
   const valorDelContexto = {
     carrito : carrito,
     cantidad : cantidad,
     total : total,
+    unidades : unidades,
     addItem : addItem,
     removeItem : removeItem, 
     isInCart : isInCart,

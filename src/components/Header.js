@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { contexto } from './context/cartContext';
 
 const Header = () => {
-
-  const {cantidad} = useContext(contexto)
 
   //variable categories
   const [categories, setCategories] = useState([])
@@ -36,7 +33,6 @@ const Header = () => {
                 <Link to="/">
                   <CartWidget/>
                 </Link>
-                {cantidad}
               </div>
             </div>
           </div>

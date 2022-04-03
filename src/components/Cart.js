@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 const Cart = () => {
 
-  const {carrito,total} = useContext(contexto)
+  const {carrito, total} = useContext(contexto)
   const {removeItem} = useContext(contexto)
   const {clearItems} = useContext(contexto)
 
