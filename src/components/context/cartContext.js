@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const contexto = createContext([])
 
-const {Provider, Consumer} = contexto
+const {Provider} = contexto
 
 
 const MiProvider = ({children}) => {

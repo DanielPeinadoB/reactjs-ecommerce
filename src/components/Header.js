@@ -3,13 +3,7 @@ import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-
 const Header = () => {
-
-  //variable categories
-  const [categories, setCategories] = useState([])
 
   return (
     <>
@@ -22,7 +16,7 @@ const Header = () => {
             <div className='me-auto'></div>
             <div className='nav-upperline'>
               <input placeholder='Search your product...' autoComplete='off' />
-              <div className='nav-item'>
+              <div className='nav-item column'>
                 <span>Welcome!</span>
                 <span>Daniel</span>
               </div>
