@@ -38,15 +38,13 @@ const MiProvider = ({children}) => {
 
   }
   
+  //remueve los items de manera individual
   const removeItem = (item) => {
     const itemRemoved = carrito.filter((i) => i.id !== item);
     setCarrito(itemRemoved);
   };
 
-  const clear = () => {
-    setCarrito([])
-  }
-
+  //remueve los todos items
   const clearItems = () => {
     setCarrito([]);
     setTotal(0)
@@ -60,7 +58,6 @@ const MiProvider = ({children}) => {
     addItem : addItem,
     removeItem : removeItem, 
     isInCart : isInCart,
-    clear : clear,
     clearItems : clearItems
   }
 
