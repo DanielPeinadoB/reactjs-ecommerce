@@ -11,20 +11,21 @@ const MiProvider = ({children}) => {
   const [cantidad, setCantidad] = useState(0)
   const [total, setTotal] = useState(0)
 
+  console.log(carrito, cantidad, total)
+
   const unidades = () => {
     const cantidad = carrito.reduce((x, y) => x + y.cantidad, 0);
     return cantidad;
   };
 
   const addItem = (producto, nuevaCantidad) => {
-
-    console.log(producto,nuevaCantidad)
     // verificar que el producto a agregar ya existe, no se agrega, y si existe se pushea al final
     const copia = carrito.slice(0)
     copia.push({ ...producto,nuevaCantidad})
     setCarrito(copia)
     setCantidad(cantidad + nuevaCantidad)
     setTotal(total + producto.price * nuevaCantidad)
+    console.log(cantidad, nuevaCantidad)
     //ItemDetail
     /*if(yaExisteEnCarrito(id)){
 
@@ -39,9 +40,11 @@ const MiProvider = ({children}) => {
   }
   
   //remueve los items de manera individual
-  const removeItem = (item) => {
-    const itemRemoved = carrito.filter((i) => i.id !== item);
+  const removeItem = (producto, nuevaCantidad) => {
+    const itemRemoved = carrito.filter((i) => i.id !== producto);
     setCarrito(itemRemoved);
+
+    console.log(cantidad, nuevaCantidad)
   };
 
   //remueve los todos items
