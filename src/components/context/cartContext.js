@@ -9,13 +9,13 @@ const MiProvider = ({children}) => {
 
   const [carrito, setCarrito] = useState([])
 
-  //Funcion para mostrar las unidades al lado del carrito
+  //Unidades al lado del carrito
   const unidades = () => {
     const numeros = carrito.reduce((x, y) => x + y.cantidad, 0);
     return numeros;
   };
 
-  //Comprobar si ya existe en el carrito
+  //Ya existe en el carrito??
   const isInCart = (id) => {
     const yaExisteEnCarrito = carrito.find((i) => i.id === id);
     if (yaExisteEnCarrito !== undefined) {
@@ -37,7 +37,7 @@ const MiProvider = ({children}) => {
     console.log(counter)
   }
 
-  //funcion para sumar la cantida de items del mismo producto
+  //sumar las cantidades
   const sumarCantidad = (counter, producto) => {
     const cantidad = [...carrito];
     cantidad.forEach((c) => {
@@ -46,12 +46,13 @@ const MiProvider = ({children}) => {
     setCarrito(cantidad)
   }
 
+  //suma total del carrito
   const total = () => {
     const sumaTotal = carrito.reduce((x, y) => x + y.price * y.cantidad, 0);
     return sumaTotal
   }
 
-  //remueve los items de manera individual
+  //remueve items individual
   const removeItem = (producto) => {
     const itemRemoved = carrito.filter((i) => i.id !== producto);
     setCarrito(itemRemoved);
