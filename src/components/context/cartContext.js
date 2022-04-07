@@ -20,6 +20,17 @@ const MiProvider = ({children}) => {
 
   const addItem = (producto, nuevaCantidad) => {
     // verificar que el producto a agregar ya existe, no se agrega, y si existe se pushea al final
+    /*const isInCart = carrito.find((item) => item.id === producto.id);
+    if(isInCart) {
+      setCarrito(carrito.map((item) => item.id === isInCart.id ?
+      {...isInCart, nuevaCantidad: isInCart.cantidad + cantidad}: item))
+    } else {
+      setCarrito([...carrito, {...producto, nuevaCantidad: cantidad }])
+    };
+
+    console.log(cantidad, nuevaCantidad)*/
+    
+
     const copia = carrito.slice(0)
     copia.push({ ...producto,nuevaCantidad})
     setCarrito(copia)
@@ -32,10 +43,6 @@ const MiProvider = ({children}) => {
     }else{
 
     }*/
-
-  }
-
-  const isInCart = (id) => {
 
   }
   
@@ -60,8 +67,7 @@ const MiProvider = ({children}) => {
     unidades : unidades,
     addItem : addItem,
     removeItem : removeItem, 
-    isInCart : isInCart,
-    clearItems : clearItems
+    clearItems : clearItems,
   }
 
   return (
