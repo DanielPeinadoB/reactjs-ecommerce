@@ -1,41 +1,31 @@
 import {useState} from 'react'
 
 
-const ItemCount = ({ initial, stock, onAdd }) => {
+const ItemCount = ({ stock, onAdd }) => {
 
-    let [estado, setEstado] = useState(initial)
+    let [counter, setCounter] = useState(0)
 
-    const increase = () => {
-        if(estado < stock) {
-            setEstado(estado + 1)
+    const add = () => {
+        if(counter < stock) {
+            setCounter(counter + 1)
         }
     }
 
-    const decrease = () => {
-        if(estado > initial)
-        setEstado(estado - 1)
+    const substract = () => {
+        if(counter > 0)
+        setCounter(counter - 1)
     }
 
-    let [remain, setStock] = useState(stock)
-
-    const handleAdd = () => {
-        //setEstado(0)
-        onAdd(estado)
-        setStock(stock - estado)
-    }
 
   return (
     <div className='counter-area'>
         <div>Cantidad</div>
         <div className='counter-meter'>
-            <button onClick={decrease}>-</button>
-            <h2> {estado} </h2>
-            <button onClick={increase}>+</button>
+            <button onClick={substract}>-</button>
+            <h2> {counter} </h2>
+            <button onClick={add}>+</button>
         </div>
-        <button onClick={handleAdd}>Agregar al carrito</button>
-        <div>
-            <span className='stock-limit'>Solo quedan {remain} unidades</span>
-        </div>
+        <button onClick={() => onAdd(counter)} disabled={counter === 0}>Agregar al carrito</button>
     </div>
   )
 }

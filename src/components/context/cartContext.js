@@ -50,6 +50,7 @@ const MiProvider = ({children}) => {
   const removeItem = (producto, nuevaCantidad) => {
     const itemRemoved = carrito.filter((i) => i.id !== producto);
     setCarrito(itemRemoved);
+    
 
     console.log(cantidad, nuevaCantidad)
   };

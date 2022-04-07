@@ -47,6 +47,16 @@ const Cart = () => {
           <div className='cart-product'>
             <div className='cart-product-details'>
               <span>{producto.title}</span>
+              <div className='column small'>
+                <div>
+                  <span>Precio Unit.</span>
+                  <span>{producto.price}</span>
+                </div>
+                <div>
+                  <span>Cantidad</span>
+                  <span>{producto.nuevaCantidad}</span>
+                </div>
+              </div>
               <button onClick={() => removeItem(producto.id)}>borrar</button>
             </div>
             <div className='cart-product-details flex-end'>
