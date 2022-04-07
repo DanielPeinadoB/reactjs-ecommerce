@@ -8,62 +8,60 @@ const {Provider} = contexto
 const MiProvider = ({children}) => {
 
   const [carrito, setCarrito] = useState([])
-  const [cantidad, setCantidad] = useState(0)
-  const [total, setTotal] = useState(0)
 
-  console.log(carrito, cantidad, total)
-
+  //Funcion para mostrar las unidades al lado del carrito
   const unidades = () => {
-    const cantidad = carrito.reduce((x, y) => x + y.cantidad, 0);
-    return cantidad;
+    const numeros = carrito.reduce((x, y) => x + y.cantidad, 0);
+    return numeros;
   };
 
-  const addItem = (producto, nuevaCantidad) => {
-    // verificar que el producto a agregar ya existe, no se agrega, y si existe se pushea al final
-    /*const isInCart = carrito.find((item) => item.id === producto.id);
-    if(isInCart) {
-      setCarrito(carrito.map((item) => item.id === isInCart.id ?
-      {...isInCart, nuevaCantidad: isInCart.cantidad + cantidad}: item))
+  //Comprobar si ya existe en el carrito
+  const isInCart = (id) => {
+    const yaExisteEnCarrito = carrito.find((i) => i.id === id);
+    if (yaExisteEnCarrito !== undefined) {
+      return true;
     } else {
-      setCarrito([...carrito, {...producto, nuevaCantidad: cantidad }])
-    };
-
-    console.log(cantidad, nuevaCantidad)*/
-    
-
-    const copia = carrito.slice(0)
-    copia.push({ ...producto,nuevaCantidad})
-    setCarrito(copia)
-    setCantidad(cantidad + nuevaCantidad)
-    setTotal(total + producto.price * nuevaCantidad)
-    console.log(cantidad, nuevaCantidad)
-    //ItemDetail
-    /*if(yaExisteEnCarrito(id)){
-
-    }else{
-
-    }*/
-
+      return false;
+    }
   }
-  
+
+  //Agregar los items de ItemDetailContainer al carrito
+  const addItem = (producto, counter) => {
+    total();
+    if (isInCart(producto.id)) {
+      sumarCantidad(counter, producto);
+    } else {
+      setCarrito([...carrito, {...producto, cantidad: counter }])
+    }
+    console.log(producto)
+    console.log(counter)
+  }
+
+  //funcion para sumar la cantida de items del mismo producto
+  const sumarCantidad = (counter, producto) => {
+    const cantidad = [...carrito];
+    cantidad.forEach((c) => {
+      c.id === producto.id && (c.cantidad += counter)
+    });
+    setCarrito(cantidad)
+  }
+
+  const total = () => {
+    const sumaTotal = carrito.reduce((x, y) => x + y.price * y.cantidad, 0);
+    return sumaTotal
+  }
+
   //remueve los items de manera individual
-  const removeItem = (producto, nuevaCantidad) => {
+  const removeItem = (producto) => {
     const itemRemoved = carrito.filter((i) => i.id !== producto);
     setCarrito(itemRemoved);
-    
-
-    console.log(cantidad, nuevaCantidad)
   };
 
-  //remueve los todos items
-  const clearItems = () => {
-    setCarrito([]);
-    setTotal(0)
-  }
+  //Remueve todos los items
+  const clearItems = () => setCarrito([])
 
   const valorDelContexto = {
     carrito : carrito,
-    cantidad : cantidad,
     total : total,
     unidades : unidades,
     addItem : addItem,

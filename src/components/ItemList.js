@@ -1,7 +1,6 @@
 import Item from './Item'
 
-// IL - Area 2 - Contiene Item
-// Es el area donde se colocaran las cards de los productos
+// Se traen los datos de los productos y organiza por el id
 
 const ItemList = ({ productos }) => {
 

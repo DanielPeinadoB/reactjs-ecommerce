@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react'
 import { toast } from  'react-toastify'
 //firebase
 import { db } from './firebase'
-import { collection, doc, getDocs, query, where } from "firebase/firestore"
+import { collection, getDocs, query, where } from "firebase/firestore"
+
+// Se definen los productos de la base de datos de firebase
 
 const ItemListContainer = () => {
 

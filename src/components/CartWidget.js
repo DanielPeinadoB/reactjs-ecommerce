@@ -4,7 +4,7 @@ import { contexto } from './context/cartContext';
 
 const CartWidget = () => {
   
-  const {cantidad, unidades} = useContext(contexto)
+  const {unidades} = useContext(contexto)
 
   return (
     <Link to="/cart">
@@ -12,9 +12,9 @@ const CartWidget = () => {
           shopping_cart
       </span>
       {unidades() === 0 ? (
-        <span>0</span>
+        <span></span>
       ) : ( 
-        <span>{cantidad}</span>
+        <span>{unidades()}</span>
       )}
     </Link>
   )

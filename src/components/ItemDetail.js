@@ -1,19 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import ItemCount from './ItemCount'
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { contexto } from './context/cartContext';
 
-const ItemDetail = ({item}) => {
+// Es el detalle de los productos, ahora item
+// Se vincula el ItemCount
 
-  const [seleccionado, setSeleccionado] = useState(0)
-  const {addItem} = useContext(contexto)
-
-  const onAdd = ( cantidadSeleccionada ) => {
-    console.log('Añadir al carrito', cantidadSeleccionada, 'und')
-    setSeleccionado(cantidadSeleccionada);
-    addItem(item,cantidadSeleccionada)
-  }
+const ItemDetail = ({item, onAdd}) => {
 
   return (
     <div className='item-detail'>

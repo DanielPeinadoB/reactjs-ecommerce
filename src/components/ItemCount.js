@@ -1,5 +1,7 @@
 import {useState} from 'react'
 
+// ItemCount - Se usa para aumentar o disminuir el counter deseado
+// Funcion onClick para confirmar y que se agregue al carrito
 
 const ItemCount = ({ stock, onAdd }) => {
 
@@ -16,7 +18,6 @@ const ItemCount = ({ stock, onAdd }) => {
         setCounter(counter - 1)
     }
 
-
   return (
     <div className='counter-area'>
         <div>Cantidad</div>
@@ -26,6 +27,9 @@ const ItemCount = ({ stock, onAdd }) => {
             <button onClick={add}>+</button>
         </div>
         <button onClick={() => onAdd(counter)} disabled={counter === 0}>Agregar al carrito</button>
+        <div>
+            <span className='stock-limit'>Solo quedan {stock - counter} unidades</span>
+        </div>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { contexto } from './context/cartContext'
 //firebase
 import { db } from './firebase'
-import { addDoc, collection, getDocs, serverTimestamp, updateDoc } from "firebase/firestore"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { toast } from 'react-toastify'
 
 const Cart = () => {
@@ -20,7 +20,6 @@ const Cart = () => {
       },
       items : carrito,
       date : serverTimestamp(),
-      total : total
     }
 
     const ordenesCollection = collection(db,"ordenes")
@@ -29,8 +28,10 @@ const Cart = () => {
     pedido
       .then(res => {
         console.log(res)
-        toast.success("Finalizo la compra!" + "ID de compra :" + res.id)
+        toast.success("Finalizo la compra! ID de compra :" + res.id)
         //updateDoc - Actualizar el stock restando la cantidad comprada
+        console.log(res.id)
+        console.log(total())
       })
       .catch(() => toast.error("Hubo un error con el proceso de tu compra"))
     
@@ -54,13 +55,13 @@ const Cart = () => {
                 </div>
                 <div>
                   <span>Cantidad</span>
-                  <span>{producto.nuevaCantidad}</span>
+                  <span>{producto.cantidad}</span>
                 </div>
               </div>
               <button onClick={() => removeItem(producto.id)}>borrar</button>
             </div>
             <div className='cart-product-details flex-end'>
-              <span>$ {producto.price * producto.nuevaCantidad}</span>
+              <span>$ {producto.price * producto.cantidad}</span>
             </div>
           </div>
         </div>
@@ -75,11 +76,11 @@ const Cart = () => {
         <div className='column'>
           <div className='total'>
             <span>Total :</span>
-            <p>$ {total}</p>
+            <p>$ {total()}</p>
           </div>
           <button onClick={terminarCompra} className='boton'>Terminar la compra</button>
-      </div>
         </div>
+      </div>
     </div>
   )
 }
