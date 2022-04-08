@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className='navbar bg-dark'>
+      <nav className='navbar bg-dark col'>
         <div className='container container-top'>
           <Link to="/" className='navbar-brand'>
               <span className='brand-text'>monkee games</span>
@@ -16,7 +16,7 @@ const Header = () => {
             <div className='me-auto'></div>
             <div className='nav-upperline'>
               <input placeholder='Search your product...' autoComplete='off' />
-              <div className='nav-item column'>
+              <div className='nav-item col'>
                 <span>Welcome!</span>
                 <span>Daniel</span>
               </div>
@@ -32,9 +32,9 @@ const Header = () => {
           </div>
         </div>
         <div className='nav-scroller bg-dark'>
-        <nav className='container nav nav-underline'>
-          <NavBar />
-        </nav>
+          <div className='container nav nav-underline'>
+            <NavBar />
+          </div>
         </div>
       </nav>
     </>

@@ -48,7 +48,7 @@ const Cart = () => {
           <div className='cart-product'>
             <div className='cart-product-details'>
               <span>{producto.title}</span>
-              <div className='column small'>
+              <div className='col small'>
                 <div>
                   <span>Precio Unit.</span>
                   <span>{producto.price}</span>
@@ -67,13 +67,13 @@ const Cart = () => {
         </div>
       ))}
       <div className='final-total'>
-        <div className='column'>
+        <div className='col'>
           <span className='small'>Para remover todos los articulos haga click en el siguiente boton</span>
           <div className='remove-btn'>
             <button onClick={clearItems}>remover todos</button>
           </div>
         </div>
-        <div className='column'>
+        <div className='col'>
           <div className='total'>
             <span>Total :</span>
             <p>$ {total()}</p>

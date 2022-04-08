@@ -13,6 +13,16 @@ html , body , #root {
     flex-direction: column;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
 main {
     flex-grow: 1;
     padding: 1rem;
@@ -28,8 +38,6 @@ body {
 }
 
 .navbar {
-    display: flex;
-    flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -133,6 +141,10 @@ body {
     padding: 1rem;
 }
 
+.hover-effect:hover {
+    background: linear-gradient(130deg, #0d6efd 0%, #546afd 100%);
+}
+
 .productos {
     display: flex;
     flex-direction: row;
@@ -153,8 +165,6 @@ body {
 .item-card {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 300px;
     text-align: center;}
     .item-card .item-top {
         display: flex;
@@ -179,10 +189,6 @@ body {
 
 .item-img-detail img {
     width: 100%;
-}
-
-.hover-effect:hover {
-    background: linear-gradient(130deg, #0d6efd 0%, #546afd 100%);
 }
 
 /*Item Detail*/
@@ -306,16 +312,6 @@ body {
 
 .small {
     font-size: 1rem;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
 }
 
 .sugerencias {
