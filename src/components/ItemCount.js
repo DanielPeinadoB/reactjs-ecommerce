@@ -1,8 +1,5 @@
 import {useState} from 'react'
 
-// ItemCount - Se usa para aumentar o disminuir el counter deseado
-// Funcion onClick para confirmar y que se agregue al carrito
-
 const ItemCount = ({ stock, onAdd }) => {
 
     let [counter, setCounter] = useState(0)

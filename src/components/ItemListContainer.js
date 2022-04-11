@@ -27,15 +27,13 @@ const ItemListContainer = () => {
         .catch(() => toast.error("Error al cargar los productos"))
         .finally(() => setLoading(false))
     }else{
-      //Filtro de los items por categoria (categoryid)
+      
       const productosCollection = collection(db,"dbItems")
       const filtro = query(productosCollection,where("categoryid", "==", idCategory))
       const pedido = getDocs(filtro)
 
       pedido
         .then(res => setProductos(res.docs.map(doc => doc.data())))
-        //usando el Auto-ID de Firebase
-        //.then(res => setProductos(res.docs.map(doc => ({id: doc.id, ...doc.data()} ))))
         .catch(() => toast.error("Error al cargar los productos"))
         .finally(() => setLoading(false))
 

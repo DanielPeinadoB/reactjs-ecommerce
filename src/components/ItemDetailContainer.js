@@ -6,8 +6,6 @@ import { db } from './firebase'
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { contexto } from './context/cartContext';
 
-// Caja principal, se consiguen los productos del ItemListContainer, ahora se define como item
-
 const ItemDetailContainer = () => {
 
   const [loading, setLoading] = useState(true);
@@ -27,10 +25,7 @@ const ItemDetailContainer = () => {
       .finally(() => setLoading(false))
   },[idProduct])
 
-  // Funcion onAdd para agregar los productos (item) al carrito
-  // addItem viene del contexto y usa las variables item y counter
   const onAdd = ( counter ) => {
-    console.log('Añadir al carrito', counter, 'und')
     toast.success('Se agregó al carrito')
     addItem(item, counter)
   }

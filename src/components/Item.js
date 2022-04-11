@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 
-// Son las cards de los productos, los campos deben de ser los mismos a los de la base de datos
-
 const Item = ({ producto }) => {
 
   return (

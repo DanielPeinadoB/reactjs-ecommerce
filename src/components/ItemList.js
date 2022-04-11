@@ -1,7 +1,5 @@
 import Item from './Item'
 
-// Se traen los datos de los productos y organiza por el id
-
 const ItemList = ({ productos }) => {
 
   return (
