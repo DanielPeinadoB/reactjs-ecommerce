@@ -78,8 +78,8 @@ const Cart = () => {
           <div className='final-total'>
             <div className='col'>
               <span className='small'>Para remover todos los articulos haga click en el siguiente boton</span>
-              <div className='capitalize'>
-                <button onClick={clearItems}>remover todos</button>
+              <div>
+                <button className='capitalize' onClick={clearItems}>remover todos</button>
               </div>
             </div>
             <div className='col'>

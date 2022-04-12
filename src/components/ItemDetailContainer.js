@@ -26,7 +26,6 @@ const ItemDetailContainer = () => {
   },[idProduct])
 
   const onAdd = ( counter ) => {
-    toast.success('Se agregó al carrito')
     addItem(item, counter)
   }
   
